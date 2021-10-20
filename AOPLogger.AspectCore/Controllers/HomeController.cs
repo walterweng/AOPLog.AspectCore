@@ -21,7 +21,7 @@ namespace AOPLogger.AspectCore.Controllers
         }
 
         [HttpGet]
-        public bool Index()
+        public string Index()
         {
             AccountModal accountModal = new AccountModal
             {

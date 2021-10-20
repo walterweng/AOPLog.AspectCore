@@ -40,7 +40,7 @@ namespace AOPLogger.AspectCore
             services.AddSingleton<INLogWriteService, NLogWriteService>();
 
             services.ConfigureDynamicProxy(config => { config.Interceptors.AddServiced<CheckLogMessage>(Predicates.ForMethod("*Check*")); });
-            services.ConfigureDynamicProxy(config => { config.Interceptors.AddServiced<AccountLogMessage>(Predicates.ForMethod("GetId")); });
+            services.ConfigureDynamicProxy(config => { config.Interceptors.AddServiced<AccountLogMessage>(Predicates.ForService("IAccountService")); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

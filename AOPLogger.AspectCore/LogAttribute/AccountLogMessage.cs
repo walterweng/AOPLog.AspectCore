@@ -30,7 +30,7 @@ namespace AOPLogger.AspectCore.LogAttribute
                 var className = context.ImplementationMethod.DeclaringType.FullName.Split(".").LastOrDefault();
                 var methodName = context.ImplementationMethod.Name;
 
-                Console.WriteLine($"{methodName}  : {fastJSON.JSON.ToJSON(context.Parameters.GetValue(0))}");
+                Console.WriteLine($"{className}.{methodName} -- Start");
 
                 string message = "This is an error message!";
 
@@ -39,7 +39,8 @@ namespace AOPLogger.AspectCore.LogAttribute
                 _logWriteService.StateInfoLog(MatchId, sequence, $"{className}.{methodName}", message);
 
                 await next(context); // 進入 Service 前會於此處被攔截（如果符合被攔截的規則）...
-                Console.WriteLine($"{methodName}  : {fastJSON.JSON.ToJSON(context.ReturnValue)}");
+                Console.WriteLine($"{className}.{methodName} ReturnValue : {fastJSON.JSON.ToJSON(context.ReturnValue)}");
+                Console.WriteLine($"{className}.{methodName} -- End");
             }
             catch (Exception ex)
             {

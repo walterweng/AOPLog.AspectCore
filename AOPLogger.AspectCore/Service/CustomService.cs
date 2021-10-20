@@ -12,7 +12,7 @@ namespace AOPLogger.AspectCore.Service
 
        public bool PassworkCheck(AccountModal accountModal)
        {
-           return false;
+           return true;
        }
     }
 }

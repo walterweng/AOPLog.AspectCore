@@ -24,7 +24,7 @@ namespace AOPLogger.AspectCore.LogAttribute
         public override async Task Invoke(AspectContext context, AspectDelegate next)
         {
 
-            var calssName = context.ImplementationMethod.DeclaringType.FullName.Split(".").LastOrDefault();
+            var className = context.ImplementationMethod.DeclaringType.FullName.Split(".").LastOrDefault();
             var methodName = context.ImplementationMethod.Name;
 
             var Name = context.Implementation.ToString();
@@ -35,16 +35,11 @@ namespace AOPLogger.AspectCore.LogAttribute
             try
             {
 
-
-                Console.WriteLine($"{methodName}  : {fastJSON.JSON.ToJSON(context.Parameters.GetValue(0))}");
-
-                //Logger.LogInformation($"methodName: {methodName}");
-
-                //if (context.Parameters.GetValue(0) is AccountModal value)
-                //    Logger.LogInformation($"username: {value.username} , password: {value.password}");
+                Console.WriteLine($"{className}.{methodName} -- Start");
 
                 await next(context); // 進入 Service 前會於此處被攔截（如果符合被攔截的規則）...
 
+                Console.WriteLine($"{className}.{methodName} -- End");
 
             }
             catch (Exception ex)
