@@ -32,7 +32,15 @@ namespace AOPLogger.AspectCore
         {
             services.AddControllers();
             services.AddTransient<ICustomService, CustomService>();
-            services.ConfigureDynamicProxy(config => { config.Interceptors.AddTyped<AccountLog>(Predicates.ForMethod("*Check*")); });
+            services.AddTransient<IAccountService, AccountService>();
+
+            services.AddSingleton<CheckLogMessage, CheckLogMessage>();
+            services.AddSingleton<AccountLogMessage, AccountLogMessage>();
+
+            services.AddSingleton<INLogWriteService, NLogWriteService>();
+
+            services.ConfigureDynamicProxy(config => { config.Interceptors.AddServiced<CheckLogMessage>(Predicates.ForMethod("*Check*")); });
+            services.ConfigureDynamicProxy(config => { config.Interceptors.AddServiced<AccountLogMessage>(Predicates.ForMethod("GetId")); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

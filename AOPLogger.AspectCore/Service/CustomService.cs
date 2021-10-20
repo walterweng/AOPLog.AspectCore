@@ -5,7 +5,7 @@ namespace AOPLogger.AspectCore.Service
 {
     public class CustomService: ICustomService
     {
-       public bool AccountCheck(AccountModal accountModal)
+        public bool AccountCheck(AccountModal accountModal)
         {
             return true;
         }

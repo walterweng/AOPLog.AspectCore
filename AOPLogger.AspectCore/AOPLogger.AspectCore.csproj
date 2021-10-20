@@ -7,12 +7,11 @@
   <ItemGroup>
     <PackageReference Include="AspectCore.Core" Version="2.2.0" />
     <PackageReference Include="AspectCore.Extensions.DependencyInjection" Version="2.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="BnpFramework">
-      <HintPath>O:\BnpFramework\netframework4.6.1\BnpFramework.dll</HintPath>
-    </Reference>
+    <PackageReference Include="fastJSON" Version="2.4.0.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="NLog" Version="4.7.11" />
+    <PackageReference Include="NLog.Config" Version="4.7.11" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

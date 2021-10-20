@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AspectCore.Extensions.DependencyInjection;
 
+
 namespace AOPLogger.AspectCore
 {
     public class Program

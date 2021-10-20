@@ -11,10 +11,12 @@ namespace AOPLogger.AspectCore.Controllers
     [Route("[controller]/[Action]")]
     public class HomeController : Controller
     {
+        private readonly IAccountService _accountService;
         public ICustomService _customService { get; }
 
-        public HomeController(ICustomService customService)
+        public HomeController(ICustomService customService , IAccountService accountService)
         {
+            _accountService = accountService;
             _customService = customService;
         }
 
@@ -27,10 +29,9 @@ namespace AOPLogger.AspectCore.Controllers
                 password = "111"
             };
             
-            var accountCheck = _customService.AccountCheck(accountModal);
-            var passworkCheck = _customService.PassworkCheck(accountModal);
 
-            return accountCheck;
+
+            return _accountService.GetId(accountModal);
         }
     }
 
